@@ -18,7 +18,7 @@ Modern website rebuild for Coventry Judo Club.
 - No public GitHub repo without approval; private initially.
 - No secrets in git.
 - No production payment/member-system changes without approval.
-- Photos involving children/members require rights/consent confirmation before production use.
+- Photos involving children/members are allowed where supplied for this project, because Bobbie confirmed current photos have consent. New Google Drive candidates should still be vision-reviewed for suitability before use.
 
 ## Planning source
 
