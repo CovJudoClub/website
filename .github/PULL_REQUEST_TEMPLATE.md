@@ -4,7 +4,7 @@
 ## Verification
 - [ ] `npm run build`
 - [ ] `npm test`
-- [ ] No literal `\n`, literal `\r`, or carriage-return artefacts are visible in this PR description or changed markdown.
+- [ ] No escaped newline/carriage-return artefacts are visible in this PR description or changed markdown.
 
 ## Approval boundaries checked
 - [ ] No production deployment, DNS, payment, member-system, or external messaging changes without approval.
