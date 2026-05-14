@@ -20,6 +20,27 @@ Modern website rebuild for Coventry Judo Club.
 - No production payment/member-system changes without approval.
 - Photos involving children/members are allowed where supplied for this project, because Bobbie confirmed current photos have consent. New Google Drive candidates should still be vision-reviewed for suitability before use.
 
+## Local development
+
+```sh
+npm install
+npm run dev
+npm run build
+npm test
+```
+
+The Playwright browser cache is not committed. If tests fail because Chromium is missing, run:
+
+```sh
+npx playwright install chromium
+```
+
+## Quality gates
+
+- `npm run build` runs `astro check` and creates the static build.
+- `npm test` runs Playwright smoke and axe accessibility checks.
+- GitHub Actions runs install, build and Playwright tests on pull requests and pushes to `main`.
+
 ## Planning source
 
 Project planning files live outside this repo at:
