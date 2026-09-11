@@ -1,216 +1,199 @@
----
-const approvalNotice = 'Draft site scaffold — club facts, timetable, prices and payment links still require approval before launch.';
----
-
+<!DOCTYPE html>
 <html lang="en-GB">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Draft Coventry Judo Club website rebuild scaffold." />
-    <title>Coventry Judo Club</title>
-  </head>
-  <body>
-    <header class="site-header" aria-label="Site header">
-      <a class="skip-link" href="#main">Skip to content</a>
-      <p class="eyebrow">Coventry Judo Club</p>
-      <nav aria-label="Primary navigation">
-        <a href="#start">Start judo</a>
-        <a href="#classes">Classes</a>
-        <a href="#membership">Membership</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coventry Judo Club — Judo for kids and adults since 1957</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;500;600;700&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/website/assets/coventry-judo-style.css">
+<template id="__bundler_thumbnail" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-bg-color="#12122a"><rect width="100" height="100" fill="#12122a"/><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="44" fill="#2ee6d6">柔道</text></svg></template>
+<script src="/website/assets/image-slot.js" is:inline></script>
+</head>
+<body>
+<header class="nav">
+<div class="wrap">
+<a class="brand" href="#top"><img src="/website/assets/logo.png" alt="Coventry Judo Club" class="logo-img"><span><b>Coventry Judo</b><small>EST. 1957 · BJA CLUB</small></span></a>
+<nav aria-label="Primary navigation"><ul>
+<li><a href="#about">About</a></li>
+<li><a href="#schedule">Classes</a></li>
+<li><a href="#team">Coaches</a></li>
+<li><a href="/website/membership/">Membership</a></li>
+<li><a href="/website/shop/">Shop</a></li>
+<li><a href="/website/contact/">Contact</a></li>
+</ul></nav>
+<a class="btn teal" href="#join">Free taster</a>
+</div>
+</header>
+<main id="top">
+<section class="hero dark">
+<div class="speed"></div>
+<div class="bg-kanji" aria-hidden="true">柔道<i>柔道</i></div>
+<div class="wrap">
+<div>
+<p class="kicker rv">Coventry · Ryton-on-Dunsmore · Since 1957</p>
+<h1 class="rv">Throw.<br>Fall.<br><em>Rise again.</em></h1>
+<p class="rv">Judo is more than a sport, it’s a path to building character, resilience, confidence, and lifelong friendships. From your first steps on the mat to competing at an elite level, everyone here grows together.</p>
+<div class="cta rv">
+<a class="btn" href="#join">Come for a free taster <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn ghost" href="#schedule">Class times</a>
+<span class="note">Kids 5+ · Adults · All levels</span>
+</div>
+</div>
+<div class="hero-card rv">
+<img class="hero-badge" src="/website/assets/badge-original.png" alt="Coventry Judo Club badge">
+<div class="frame"></div>
+<div class="ph"><image-slot id="hero-photo" shape="rect" placeholder="Drop hero photo (action shot on the mat)" src="/website/assets/uploads/FB_IMG_1757744517087.jpg"></image-slot></div>
+<div class="badge"><small>Mon · Tue · Thu</small>Club nights</div>
+</div>
+</div>
+</section>
+<div class="tape" aria-hidden="true"><div class="track"><span>柔道 The gentle way</span><span>Free first session</span><span>Juniors from age 5</span><span>Olympic sport</span><span>British Judo Association club</span><span>柔道 The gentle way</span><span>Free first session</span><span>Juniors from age 5</span><span>Olympic sport</span><span>British Judo Association club</span></div></div>
 
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <p class="eyebrow">Family-friendly • disciplined • welcoming</p>
-          <h1 id="hero-title">A modern home for Coventry Judo Club is taking shape.</h1>
-          <p class="lede">
-            This private draft scaffold establishes the Astro + TypeScript foundation for the new club website.
-          </p>
-          <p class="notice" role="note">{approvalNotice}</p>
-          <a class="button" href="#contact">Register interest</a>
-        </div>
-        <div class="crest-placeholder" aria-label="Coventry Judo Club crest placeholder">
-          CJC
-        </div>
-      </section>
+<section class="sec light" id="about">
+<div class="rail l"><span>一九五七</span></div>
+<div class="wrap grid2">
+<div>
+<p class="kicker rv">About the club</p>
+<h2 class="rv">Coventry’s dojo since 1957</h2>
+<p class="lead rv">Coventry Judo Club has been running since 1957 within the Coventry area. Our dedicated coaches have an abundance of experience and are proud to be able to cater for all levels and offer lessons for children from 5+ ages. Training can be tailored to all individual’s abilities.</p>
+<div class="stats rv">
+<div><b>1957</b><span>Founded</span></div>
+<div><b>5+</b><span>Junior start age</span></div>
+<div><b>BJA</b><span>Member club</span></div>
+</div>
+</div>
+<div class="about-img rv"><image-slot id="about-photo" shape="rect" placeholder="Drop a club photo" src="/website/assets/uploads/throw-bw.png"></image-slot></div>
+</div>
+</section>
+<section class="sec light archive" id="archive">
+<div class="wrap">
+<p class="kicker rv">From the archive</p>
+<h2 class="rv">Seven decades on the mat</h2>
+<div class="prints">
+<figure class="rv"><image-slot id="archive-1" shape="rect" placeholder="Drop an archive photo" src="/website/assets/uploads/archive-team-colour.jpg"></image-slot><figcaption><b>1970s</b><span>Club squad with the season’s silverware</span></figcaption></figure>
+<figure class="rv"><image-slot id="archive-2" shape="rect" placeholder="Drop an archive photo" src="/website/assets/uploads/archive-tracksuits.jpg"></image-slot><figcaption><b>Late 1970s</b><span>Coventry team in club tracksuits</span></figcaption></figure>
+<figure class="rv"><image-slot id="archive-3" shape="rect" placeholder="Drop an archive photo" src="/website/assets/uploads/archive-trophies.jpg"></image-slot><figcaption><b>1980s</b><span>Bruce Newcombe and Adrian Holt with the senior team</span></figcaption></figure>
+</div>
+</div>
+</section>
 
-      <section id="start" class="panel" aria-labelledby="start-title">
-        <h2 id="start-title">Beginner journey</h2>
-        <p>Placeholder content will be replaced only with approved club facts and copy.</p>
-      </section>
+<section class="sec dark" id="schedule">
+<div class="rail r"><span>稽古</span></div>
+<div class="wrap">
+<div class="card-head">
+<div><p class="kicker rv">Training schedule</p><h2 class="rv">Club nights</h2></div>
+<p class="lead rv" style="max-width:420px">Whether you're stepping onto the mat for the first time or returning after a break, we would love to have you join us. Pop down on any club night to have a look around.</p>
+</div>
+<div class="sched rv">
+<div class="row head"><div>Day</div><div>Juniors · Under 8s</div><div>Juniors · Over 8s &amp; Seniors</div><div>Advanced Juniors &amp; Seniors 14+</div></div>
+<div class="row"><div>Mon</div><div class="t off" data-l="Juniors · Under 8s">—</div><div class="t off" data-l="Over 8s &amp; Seniors">—</div><div class="t" data-l="Advanced Juniors &amp; Seniors 14+">6:30<em>–</em>8:00<small>pm · Technical &amp; conditioning</small></div></div>
+<div class="row"><div>Tue</div><div class="t" data-l="Juniors · Under 8s">6:00<em>–</em>7:00<small>pm</small></div><div class="t" data-l="Over 8s &amp; Seniors">7:00<em>–</em>8:30<small>pm</small></div><div class="t off" data-l="Advanced 14+">—</div></div>
+<div class="row"><div>Thu</div><div class="t" data-l="Juniors · Under 8s">6:00<em>–</em>7:00<small>pm</small></div><div class="t" data-l="Over 8s &amp; Seniors">7:00<em>–</em>8:30<small>pm</small></div><div class="t off" data-l="Advanced 14+">—</div></div>
+</div>
+<div class="sched-foot rv">
+<p>Times may occasionally change for gradings or events — check announcements or contact us if unsure.</p>
+<address>Sports Connexion, Leamington Road<br>Ryton On Dunsmore, Coventry CV8 3FL<br><a href="https://www.google.com/maps/place/Sports+Connexion+Leisure+Club+%26+Venue/@52.358406,-1.4401017,17z">Open in Google Maps →</a></address>
+</div>
+</div>
+</section>
 
-      <section id="classes" class="panel" aria-labelledby="classes-title">
-        <h2 id="classes-title">Classes and timetable</h2>
-        <p>Timetable details are intentionally omitted until confirmed by Robert/Bobbie or club officials.</p>
-      </section>
+<section class="sec light" id="why">
+<div class="rail l"><span>礼 · 力 · 心</span></div>
+<div class="wrap">
+<p class="kicker rv">Why judo</p>
+<h2 class="rv">Built for kids.<br>Built for adults.</h2>
+<div class="why">
+<article class="rv"><span class="num">01</span><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><h3>Confidence for kids</h3><p>Children not only gain the physical benefits from judo, they also build their self-confidence, discipline, coordination and personality.</p></article>
+<article class="rv"><span class="num">02</span><svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M6 12h12M3 8v8M21 8v8"/></svg><h3>Fitness for adults</h3><p>For adults, judo is an ideal sport to improve fitness and flexibility whilst helping to improve their overall well-being. It pairs well with sports such as rugby.</p></article>
+<article class="rv"><span class="num">03</span><svg viewBox="0 0 24 24"><path d="M12 22c5-3 8-7 8-12V5l-8-3-8 3v5c0 5 3 9 8 12z"/></svg><h3>The gentle way</h3><p>Judo, meaning “the gentle way”, is a modern Japanese martial art and Olympic sport. It emphasises technique, balance, leverage, and respect.</p></article>
+</div>
+</div>
+</section>
 
-      <section id="membership" class="panel" aria-labelledby="membership-title">
-        <h2 id="membership-title">Membership and payments</h2>
-        <p>Future links will use approved hosted handoffs for Coacha, British Judo and GoCardless/direct debit.</p>
-      </section>
+<section class="sec dark" id="team">
+<div class="rail r"><span>先生</span></div>
+<div class="wrap">
+<p class="kicker rv">Our team</p>
+<h2 class="rv">Coaches in your corner</h2>
+<p class="lead rv">Our coaches are all experienced, insured, trained in safeguarding and follow BJA’s Child Protection &amp; Vulnerable Adults Policies and Procedures.</p>
+<div class="team-wrap">
+<figure class="patron rv"><span class="kj" aria-hidden="true">師範</span><div class="belt"></div><div class="pic"><image-slot id="coach-neil" shape="rect" placeholder="Drop photo of Neil Adams" src="/website/assets/uploads/London_2012_-_Neil_Adams_crop.jpg" credit="Photo: Wikimedia Commons, CC BY-SA" credit-href="https://commons.wikimedia.org/wiki/File:London_2012_-_Neil_Adams_crop.jpg"></image-slot></div><figcaption><b>Neil Adams MBE</b><span>Club Patron</span><p>World Champion, twice Olympic silver medallist and five-time European Senior Champion, with a 15-year run of international podium finishes. Neil continues to develop the sport and train young judoka at an elite level. <a href="https://www.neiladamsjudo.info/">neiladamsjudo.info →</a></p></figcaption></figure>
+<div class="team">
 
-      <section id="contact" class="panel" aria-labelledby="contact-title">
-        <h2 id="contact-title">Contact</h2>
-        <p>Contact form and assistant workflows will be added after privacy, safeguarding and recipient approval.</p>
-      </section>
-    </main>
-  </body>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-bruce" shape="rect" placeholder="Drop photo of Bruce Newcombe" src="/website/assets/uploads/BM-2-150x150.png"></image-slot></div><figcaption><b>Bruce Newcombe</b><span>President &amp; Senior Coach</span><p>Joined the club in 1964 aged 11. British Judo Squad 1974–80 and Olympic reservist for Moscow 1980. British Open silver (1978), ten-time Midlands Area Champion and holder of British, All England and All Scotland titles. Coached the Midlands Junior Squad for 19 years, producing four British team titles and national champions including Simon Moss and Paralympic medallist Sam Ingram.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-josh" shape="rect" placeholder="Drop photo of Josh Giles" src="/website/assets/uploads/20190407_lignano_fdc_day1_terranova_rocco_ita_joshua_giles.jpg" credit="Photo: Franco Di Capua / JudoInside.com" credit-href="https://judoinside.com/judoka/81832/Joshua_Giles"></image-slot></div><figcaption><b>Josh Giles</b><span>Head Coach</span><p>Coventry born and bred, on the mat here since age 5. British Senior Champion 2018 (-60kg) and a European Open silver (Cluj-Napoca 2022) and bronze (Sofia 2023) medallist for Great Britain, plus European Cup bronze in Sarajevo and a Junior European Cup medal. British U15, Cadet and U21 champion along the way, and English Open champion four times. Josh leads junior and senior sessions.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-zviad" shape="rect" placeholder="Drop photo of Zviad Tsiklauri" src="/website/assets/uploads/GS_I9801-1662744120-1662744120.jpg" credit="Photo: International Judo Federation" credit-href="https://www.ijf.org/"></image-slot></div><figcaption><b>Zviad Tsiklauri</b><span>Coach · World &amp; European Champion</span><p>Georgian heavyweight (+100kg) and Veterans World Champion 2017. A British Open bronze medallist (2004, 2009), English Senior Open champion 2013 and 2014, London Senior Open champion 2013 and still winning: gold at the Kent International 2022 and a London Open medal in 2024. Brings Georgian-style gripping and power judo to the club.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-sara" shape="rect" placeholder="Drop photo of Sara Hayes" src="/website/assets/uploads/Sara-2.jpg"></image-slot></div><figcaption><b>Sara Hayes</b><span>Club Secretary &amp; Coach</span><p>Practising judo since 1972, the last 25 years in Coventry. Competed at junior and university level and enjoys the technical side of the sport: a first dan, qualified Club Coach and National C Referee. Served on the BJA Complaints &amp; Conduct Commission and on the BJA Board as an independent non-executive member from 2013 to 2016.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-chloe" shape="rect" placeholder="Drop photo of Chloe Cherry" src="/website/assets/uploads/001-Chloe-2-281x300.jpg"></image-slot></div><figcaption><b>Chloe Cherry</b><span>Chairman &amp; Club Welfare Officer</span><p>Judo runs in the family. Chloe started at five in Ireland and trained for over ten years, finishing her competitive career representing Ireland on the national team. As Chairman and Welfare Officer she keeps the club safe, welcoming and friendly for every member.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-lee" shape="rect" placeholder="Drop action shot of Lee Tibbatts"></image-slot></div><figcaption><b>Lee Tibbatts</b><span>Coach &amp; Technical Specialist</span><p>An experienced judoka with decades on the mat, deeply rooted in the Midlands judo community. Known for exceptional technical precision, he is highly regarded across the region as an outstanding uke for high-level practice and official dan gradings. A qualified coach trained under world-class mentorship, Lee brings an analytical approach to the club, helping players sharpen their throwing accuracy, standardise their form and prepare confidently for competition and grading milestones.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-adrian-d" shape="rect" placeholder="Drop action shot of Adrian Drugulescu"></image-slot></div><figcaption><b>Adrian Drugulescu</b><span>Coach &amp; Groundwork Specialist</span><p>Brings a highly strategic and tactical approach to the coaching team, with a strong emphasis on newaza (groundwork) transitions and submission mechanics. Specialising in linking explosive standing techniques seamlessly into dominant ground control, his training blocks focus heavily on grip fighting (kumi-kata) and breaking opponent tempos. He works closely with the senior squad to cultivate aggressive match-play pacing and resilience on the mat.</p></figcaption></figure>
+<figure class="rv"><div class="belt"></div><div class="pic"><image-slot id="coach-henry" shape="rect" placeholder="Drop action shot of Henry So"></image-slot></div><figcaption><b>Henry So</b><span>Coach &amp; Youth Academy Lead</span><p>Focuses on long-term athlete development, managing the vital transition phase where intermediate and junior squads advance into technical syllabus concepts. His coaching philosophy champions agility, exceptional breakfalls (ukemi), and opportunistic footwork over raw physical strength. Known for his patient and encouraging mentoring style, he excels at building confidence in younger judoka while instilling clean, injury-free foundational habits.</p></figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec light compete" id="compete">
+<div class="rail l"><span>試合</span></div>
+<div class="wrap grid2">
+<div class="rv compete-pic"><image-slot id="compete-photo" shape="rect" placeholder="Drop a competition photo" src="/website/assets/uploads/DSCF0060-copy.jpg" credit="Photo: British Judo Association" credit-href="https://www.britishjudo.org.uk/"></image-slot></div>
+<div>
+<p class="kicker rv">Competition</p>
+<blockquote class="rv">From first steps to <em>international competitors</em> — all on one mat.</blockquote>
+<ul class="list rv">
+<li><b>01</b>Our members include children, adults, hobbyists, and international competitors.</li>
+<li><b>02</b>Serious competition training alongside recreational judo for family fitness and fun.</li>
+<li><b>03</b>The opportunity to participate in BJA events and gradings through the belt ranks.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="sec dark" id="join">
+<div class="rail r"><span>入門</span></div>
+<div class="wrap">
+<div class="card-head">
+<div><p class="kicker rv">Membership</p><h2 class="rv">Your first session is free</h2></div>
+<p class="lead rv" style="max-width:420px">Just come along to a session that suits your age and experience. All you need is comfortable clothing, enthusiasm, and an interest in learning a great martial art. Train occasionally? Pay as you go — no subscription required.</p>
+</div>
+<div class="plans">
+<div class="plan rv"><h3>Juniors / Students</h3><div class="opt"><span>Single session per week</span><b>£20<small>/mo</small></b></div><div class="opt"><span>Unlimited sessions</span><b>£35<small>/mo</small></b></div></div>
+<div class="plan hot rv"><h3>Family (Juniors)</h3><div class="opt"><span>Single session per week</span><b>£35<small>/mo</small></b></div><div class="opt"><span>Unlimited sessions</span><b>£60<small>/mo</small></b></div></div>
+<div class="plan rv"><h3>Seniors</h3><div class="opt"><span>Single weekly session</span><b>£30<small>/mo</small></b></div><div class="opt"><span>Unlimited sessions</span><b>£55<small>/mo</small></b></div></div>
+</div>
+<p class="plans-note rv">Coventry Judo Club are members of the British Judo Association. To continue your judo journey you are required to gain your licence from the <a href="https://www.britishjudo.org.uk/my-judo/membership/">BJA</a> — it includes insurance, gradings, BJA competitions and retailer discounts.</p>
+</div>
+</section>
+
+<section class="poster">
+<div class="kj" aria-hidden="true">道</div>
+<div class="wrap">
+<p class="big disp rv">Step on<br>the <em>mat.</em></p>
+<div class="row rv">
+<p>Mondays, Tuesdays and Thursdays at Sports Connexion, Ryton. Turn up, watch, or try a free session — our coaches will help you pick the right class.</p>
+<a class="btn" href="https://my.coacha.app/member_signup/E5IZPMG4D6">Become a member <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="cols">
+<div><a class="brand" href="#top"><img src="/website/assets/logo.png" alt="Coventry Judo Club" class="logo-img"><span><b>Coventry Judo</b><small>EST. 1957 · BJA CLUB</small></span></a><address style="margin-top:20px">Sports Connexion, Leamington Road<br>Ryton On Dunsmore, Coventry CV8 3FL</address></div>
+<div><h4>Club</h4><ul><li><a href="#about">About</a></li><li><a href="#schedule">Training schedule</a></li><li><a href="#team">Our team</a></li><li><a href="/website/shop/">Shop</a></li></ul></div>
+<div><h4>Join</h4><ul><li><a href="/website/membership/">Membership</a></li><li><a href="https://my.coacha.app/member_signup/E5IZPMG4D6">Sign up online</a></li><li><a href="/website/contact/">Contact</a></li><li><a href="https://www.britishjudo.org.uk/">British Judo</a></li></ul></div>
+<div><h4>Follow</h4><ul><li><a href="https://www.facebook.com/groups/24253723951/">Facebook</a></li><li><a href="https://www.instagram.com/coventryjudoclub/">Instagram</a></li></ul></div>
+</div>
+<div class="base"><span>© 2026 Coventry Judo Club</span><span><a href="https://www.coventryjudo.com/terms-of-service/">Terms of service</a> · <a href="https://www.coventryjudo.com/privacy/">Privacy</a></span></div>
+</div>
+</footer>
+<script is:inline>
+const rv=[...document.querySelectorAll('.rv')];
+const show=el=>el.classList.add('in');
+rv.forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';if(el.getBoundingClientRect().top<innerHeight)show(el)});
+if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{threshold:.12});rv.forEach(el=>io.observe(el))}else rv.forEach(show);
+setTimeout(()=>rv.forEach(show),1500);
+</script>
+</body>
 </html>
-
-<style>
-  :root {
-    color-scheme: light;
-    --crest-red: #b5121b;
-    --tatami-cream: #f8f1df;
-    --charcoal: #14171a;
-    --gi-white: #ffffff;
-    --gold: #d7a72f;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    background: var(--tatami-cream);
-    color: var(--charcoal);
-    font-family:
-      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.6;
-  }
-
-  .skip-link {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    transform: translateY(-200%);
-    background: var(--charcoal);
-    color: var(--gi-white);
-    padding: 0.75rem 1rem;
-    z-index: 10;
-  }
-
-  .skip-link:focus {
-    transform: translateY(0);
-  }
-
-  .site-header {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    padding: 1rem clamp(1rem, 4vw, 4rem);
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1rem;
-  }
-
-  a {
-    color: var(--charcoal);
-  }
-
-  a:focus-visible,
-  .button:focus-visible {
-    outline: 3px solid var(--gold);
-    outline-offset: 4px;
-  }
-
-  .hero {
-    align-items: center;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: minmax(0, 1fr) minmax(12rem, 20rem);
-    min-height: 70vh;
-    padding: clamp(2rem, 7vw, 7rem) clamp(1rem, 4vw, 4rem);
-  }
-
-  .eyebrow {
-    color: var(--crest-red);
-    font-size: 0.875rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    line-height: 0.95;
-    margin: 0 0 1rem;
-    max-width: 12ch;
-  }
-
-  h2 {
-    font-size: clamp(1.75rem, 4vw, 3rem);
-    line-height: 1.1;
-    margin-top: 0;
-  }
-
-  .lede {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    max-width: 45rem;
-  }
-
-  .notice {
-    background: var(--gi-white);
-    border-left: 0.35rem solid var(--crest-red);
-    max-width: 48rem;
-    padding: 1rem;
-  }
-
-  .button {
-    background: var(--crest-red);
-    border-radius: 999px;
-    color: var(--gi-white);
-    display: inline-block;
-    font-weight: 800;
-    margin-top: 1rem;
-    padding: 0.85rem 1.2rem;
-    text-decoration: none;
-  }
-
-  .crest-placeholder {
-    align-items: center;
-    aspect-ratio: 1;
-    background:
-      radial-gradient(circle at 50% 45%, var(--gi-white) 0 34%, transparent 35%),
-      conic-gradient(from -30deg, var(--crest-red), var(--gold), #1f6f43, var(--crest-red));
-    border: 0.5rem solid var(--gi-white);
-    border-radius: 50%;
-    box-shadow: 0 1.5rem 4rem rgb(20 23 26 / 20%);
-    color: var(--charcoal);
-    display: grid;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 900;
-    justify-content: center;
-    letter-spacing: -0.08em;
-  }
-
-  .panel {
-    background: var(--gi-white);
-    border-top: 1px solid rgb(20 23 26 / 12%);
-    padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem);
-  }
-
-  @media (max-width: 760px) {
-    .site-header,
-    .hero {
-      align-items: start;
-      grid-template-columns: 1fr;
-    }
-
-    .site-header {
-      flex-direction: column;
-    }
-
-    .crest-placeholder {
-      max-width: 14rem;
-    }
-  }
-</style>
