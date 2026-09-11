@@ -34,9 +34,15 @@ class ImageSlot extends HTMLElement {
       const creditLink = document.createElement('a');
       creditLink.href = creditHref;
       creditLink.textContent = credit;
+      creditLink.style.background = 'rgb(13 13 28 / 88%)';
+      creditLink.style.bottom = '0.5rem';
+      creditLink.style.color = '#fff';
       creditLink.style.display = 'inline-block';
       creditLink.style.fontSize = '0.75rem';
-      creditLink.style.marginTop = '0.25rem';
+      creditLink.style.left = '0.5rem';
+      creditLink.style.padding = '0.25rem 0.4rem';
+      creditLink.style.position = 'absolute';
+      creditLink.style.zIndex = '2';
       this.append(creditLink);
     }
   }

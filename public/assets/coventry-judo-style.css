@@ -132,8 +132,8 @@ h2{font-size:clamp(44px,6vw,88px);margin:16px 0 24px}
 .team-wrap .pic{position:relative;width:100%;aspect-ratio:4/3;margin-bottom:20px;filter:saturate(1.05) contrast(1.05)}
 .team-wrap .pic::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(to top,var(--navy-2),transparent);pointer-events:none}
 .team-wrap figcaption{padding:0 24px;position:relative}
-.team-wrap .patron{display:flex;flex-direction:row;align-items:stretch;gap:0;padding:0;height:auto}
-.team-wrap .patron .pic{flex:0 0 42%;aspect-ratio:auto;height:auto;min-height:320px;margin:0;align-self:stretch;clip-path:polygon(0 0,100% 0,90% 100%,0 100%);filter:none}
+.team-wrap .patron{display:flex;flex-direction:row;align-items:stretch;gap:0;padding:0;height:440px}
+.team-wrap .patron .pic{flex:0 0 42%;aspect-ratio:auto;height:auto;min-height:0;margin:0;align-self:stretch;clip-path:polygon(0 0,100% 0,90% 100%,0 100%);filter:none}
 .team-wrap .patron .pic::after{display:none}
 .team-wrap .patron figcaption{flex:1 1 auto;min-width:0;padding:32px 40px 32px 24px;align-self:center}
 .team-wrap figcaption b{font-family:var(--disp);font-weight:400;font-size:26px;text-transform:uppercase;display:block;line-height:1;color:var(--white)}
@@ -146,7 +146,7 @@ h2{font-size:clamp(44px,6vw,88px);margin:16px 0 24px}
 .team-wrap .patron p a{color:var(--ink);font-weight:600}.team-wrap .patron p a:hover{color:var(--white)}
 .team-wrap .patron::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 8px);pointer-events:none}
 .team-wrap .patron .kj{position:absolute;right:16px;top:-4px;font-family:"Noto Sans JP",sans-serif;font-weight:900;font-size:110px;line-height:1;color:rgba(18,18,42,.22);writing-mode:vertical-rl}
-@media(max-width:900px){.team-wrap .patron{flex-direction:column;gap:0}.team-wrap .patron figcaption{padding:24px}.team-wrap .patron .pic{flex:none;min-height:240px}.team-wrap .patron .pic::after{display:none;background:linear-gradient(to top,var(--coral),transparent)}.team figure,.team figure:nth-child(5),.team figure:nth-child(6){grid-column:span 3}.team-wrap .patron{grid-column:span 6}}
+@media(max-width:900px){.team-wrap .patron{flex-direction:column;gap:0;height:auto}.team-wrap .patron figcaption{padding:24px}.team-wrap .patron .pic{flex:none;min-height:240px;height:auto}.team-wrap .patron .pic::after{display:none;background:linear-gradient(to top,var(--coral),transparent)}.team figure,.team figure:nth-child(5),.team figure:nth-child(6){grid-column:span 3}.team-wrap .patron{grid-column:span 6}}
 @media(max-width:520px){.team figure{grid-column:span 6}}
 /* compete */
 .compete .grid2{align-items:stretch}

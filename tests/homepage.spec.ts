@@ -41,6 +41,29 @@ test('club images do not request design-editor state at runtime', async ({ page 
   await page.waitForTimeout(250);
   expect(editorStateRequests).toEqual([]);
 });
+test('photo credits are overlaid on their associated images', async ({ page }) => {
+  await page.goto('.');
+
+  const image = page.locator('#coach-neil img');
+  const credit = page.locator('#coach-neil a');
+  const [imageBox, creditBox] = await Promise.all([image.boundingBox(), credit.boundingBox()]);
+
+  expect(creditBox?.y).toBeGreaterThan((imageBox?.y ?? 0) + (imageBox?.height ?? 0) - 60);
+  expect(creditBox?.y).toBeLessThan((imageBox?.y ?? 0) + (imageBox?.height ?? 0));
+});
+
+test('coach panel height defines the patron image height on desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('.');
+
+  const patron = page.locator('.team-wrap .patron');
+  const patronImage = patron.locator('.pic');
+  const [panelBox, imageBox] = await Promise.all([patron.boundingBox(), patronImage.boundingBox()]);
+
+  expect(panelBox?.height).toBeGreaterThanOrEqual(420);
+  expect(Math.abs((imageBox?.height ?? 0) - (panelBox?.height ?? 0))).toBeLessThanOrEqual(2);
+});
+
 test('homepage has no detectable critical accessibility violations', async ({ page }) => {
   await page.goto('.');
 
