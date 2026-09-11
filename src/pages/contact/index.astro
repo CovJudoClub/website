@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Coventry Judo Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;500;600;700&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/website/assets/coventry-judo-style.css"><link rel="stylesheet" href="/website/assets/coventry-judo-pages.css">
+<template id="__bundler_thumbnail" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-bg-color="#12122a"><rect width="100" height="100" fill="#12122a"/><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="44" fill="#2ee6d6">柔道</text></svg></template>
+<script src="/website/assets/image-slot.js" is:inline></script>
+</head>
+<body>
+<header class="nav">
+<div class="wrap">
+<a class="brand" href="/website/"><img src="/website/assets/logo.png" alt="Coventry Judo Club" class="logo-img"><span><b>Coventry Judo</b><small>EST. 1957 · BJA CLUB</small></span></a>
+<nav aria-label="Primary navigation"><ul>
+<li><a href="/website/#about">About</a></li>
+<li><a href="/website/#schedule">Classes</a></li>
+<li><a href="/website/#team">Coaches</a></li>
+<li><a href="/website/membership/">Membership</a></li>
+<li><a href="/website/shop/">Shop</a></li>
+<li><a href="/website/contact/">Contact</a></li>
+</ul></nav>
+<a class="btn teal" href="/website/membership/">Free taster</a>
+</div>
+</header>
+<main id="top">
+<section class="page-hero dark">
+<div class="speed"></div>
+<div class="bg-kanji" aria-hidden="true">連絡</div>
+<div class="rail r"><span>連絡</span></div>
+<div class="wrap">
+<p class="kicker rv">Contact</p>
+<h1 class="rv">Get in <em>touch.</em></h1>
+<p class="lead rv">Questions about classes, membership or which session to start with? Call, or send us a message and we'll get back to you.</p>
+</div>
+</section>
+<section class="sec light contact" id="contact">
+<div class="rail l"><span>問合</span></div>
+<div class="wrap grid2">
+<div>
+<p class="kicker rv">Call us</p>
+<ul class="phones rv">
+<li><b>Bruce Newcombe</b><span>Club President &amp; Senior Coach</span><a href="tel:07852237080">07852 237080</a></li>
+<li><b>Sara Hayes</b><span>Club Secretary</span><a href="tel:07817490241">07817 490241</a></li>
+</ul>
+<p class="kicker rv" style="margin-top:48px">Where to find us</p>
+<address class="rv find">Sports Connexion,<br>Leamington Road,<br>Ryton On Dunsmore,<br>Coventry, CV8 3FL<br><a href="https://www.google.com/maps/place/Sports+Connexion+Leisure+Club+%26+Venue/@52.3584045,-1.4400736,17z/data=!3m1!4b1!4m5!3m4!1s0x487749da4c7dd0b7:0x11c12454ef2a0df1!8m2!3d52.3584575!4d-1.4378345">Google Maps →</a></address>
+</div>
+<aside class="cform rv" aria-label="Online contact form status">
+<div class="belt"></div>
+<h2>Online form coming soon</h2>
+<p>For now, please call one of the club contacts shown here. This avoids collecting personal information until the club has approved a secure form and reply process.</p>
+</aside>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="cols">
+<div><a class="brand" href="#top"><img src="/website/assets/logo.png" alt="Coventry Judo Club" class="logo-img"><span><b>Coventry Judo</b><small>EST. 1957 · BJA CLUB</small></span></a><address style="margin-top:20px">Sports Connexion, Leamington Road<br>Ryton On Dunsmore, Coventry CV8 3FL</address></div>
+<div><h4>Club</h4><ul><li><a href="/website/#about">About</a></li><li><a href="/website/#schedule">Training schedule</a></li><li><a href="/website/#team">Our team</a></li><li><a href="/website/shop/">Shop</a></li></ul></div>
+<div><h4>Join</h4><ul><li><a href="/website/membership/">Membership</a></li><li><a href="https://my.coacha.app/member_signup/E5IZPMG4D6">Sign up online</a></li><li><a href="/website/contact/">Contact</a></li><li><a href="https://www.britishjudo.org.uk/">British Judo</a></li></ul></div>
+<div><h4>Follow</h4><ul><li><a href="https://www.facebook.com/groups/24253723951/">Facebook</a></li><li><a href="https://www.instagram.com/coventryjudoclub/">Instagram</a></li></ul></div>
+</div>
+<div class="base"><span>© 2026 Coventry Judo Club</span><span><a href="https://www.coventryjudo.com/terms-of-service/">Terms of service</a> · <a href="https://www.coventryjudo.com/privacy/">Privacy</a></span></div>
+</div>
+</footer>
+<script is:inline>
+const rv=[...document.querySelectorAll('.rv')];
+const show=el=>el.classList.add('in');
+rv.forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';if(el.getBoundingClientRect().top<innerHeight)show(el)});
+if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{threshold:.12});rv.forEach(el=>io.observe(el))}else rv.forEach(show);
+setTimeout(()=>rv.forEach(show),1500);
+</script>
+</body>
+</html>
