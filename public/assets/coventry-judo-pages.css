@@ -68,6 +68,7 @@
 .ev-date span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal);margin-top:6px}
 .ev .tag{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--coral);color:var(--white);clip-path:polygon(0 0,100% 0,100% 100%,6px 100%)}
 .ev .tag.silver{background:#cfd3dc;color:var(--ink)}
+.ev .tag.bronze,.medal.bronze{background:#b87333;color:var(--white)}
 .ev h2{font-size:clamp(30px,3.2vw,44px);margin:16px 0 14px;color:var(--white)}
 .ev p{color:#c9c9dc;max-width:60ch}.ev dl{display:grid;gap:12px;margin:22px 0 28px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
 .ev dl div{display:grid;grid-template-columns:90px 1fr;gap:12px;font-size:15px}.ev dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal);padding-top:2px}.ev dd{color:#e6e6f0}

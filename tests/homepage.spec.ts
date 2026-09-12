@@ -48,7 +48,7 @@ test('archive captions use the club-approved wording', async ({ page }) => {
 test('events page presents supplied competition details and accessible navigation', async ({ page }) => {
   const localImageResponses: Array<{ url: string; status: number }> = [];
   page.on('response', (response) => {
-    if (response.url().includes('/website/assets/uploads/')) {
+    if (response.url().includes('/website/assets/uploads/') || response.url().includes('/website/assets/events/')) {
       localImageResponses.push({ url: response.url(), status: response.status() });
     }
   });
@@ -56,7 +56,7 @@ test('events page presents supplied competition details and accessible navigatio
   await page.goto('events/');
 
   const eventImages = page.locator('.ev image-slot, .gal image-slot');
-  await expect(eventImages).toHaveCount(3);
+  await expect(eventImages).toHaveCount(5);
   for (let index = 0; index < await eventImages.count(); index += 1) {
     await eventImages.nth(index).scrollIntoViewIfNeeded();
   }
@@ -69,6 +69,10 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
   await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Lucas wins bronze at the Kent Open' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Lucas' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Kent Open' })).toBeVisible();
+  await expect(page.locator('#ev-kent-open-2026 img')).toHaveAttribute('src', '/website/assets/events/lucas-kent-open-bronze-2026-card.jpg');
   expect(localImageResponses.length).toBeGreaterThan(0);
   expect(localImageResponses.every(({ status }) => status === 200)).toBeTruthy();
 });
