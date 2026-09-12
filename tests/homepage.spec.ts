@@ -46,6 +46,13 @@ test('archive captions use the club-approved wording', async ({ page }) => {
 });
 
 test('events page presents supplied competition details and accessible navigation', async ({ page }) => {
+  const localImageResponses: Array<{ url: string; status: number }> = [];
+  page.on('response', (response) => {
+    if (response.url().includes('/website/assets/uploads/')) {
+      localImageResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
+
   await page.goto('events/');
 
   await expect(page).toHaveTitle(/Events — Coventry Judo Club/);
@@ -53,6 +60,8 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
   await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
+  expect(localImageResponses.length).toBeGreaterThan(0);
+  expect(localImageResponses.every(({ status }) => status === 200)).toBeTruthy();
 });
 
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
