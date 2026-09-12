@@ -58,3 +58,4 @@
 .cform .ok,.cform .err{display:none;font-size:14px;padding:12px 16px}
 .cform .ok{background:var(--teal);color:var(--ink)}.cform .err{background:var(--coral);color:var(--white)}
 .cform.sent .ok{display:block}
+.cform .honeypot{display:none}
