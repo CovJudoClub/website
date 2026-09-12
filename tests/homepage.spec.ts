@@ -12,15 +12,31 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
 });
 
-test('the four supplied pages are available from their public paths', async ({ page }) => {
-  for (const path of ['.', 'membership/', 'shop/', 'contact/']) {
+test('the five supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
+  for (const path of ['.', 'membership/', 'shop/', 'contact/', 'privacy/']) {
     const response = await page.goto(path);
     expect(response?.ok()).toBeTruthy();
   }
 
+  await page.goto('contact/');
   await expect(page).toHaveTitle(/Contact — Coventry Judo Club/);
   await expect(page.getByRole('link', { name: '07852 237080' })).toBeVisible();
-  await expect(page.getByRole('form')).toHaveCount(0);
+  const contactForm = page.getByRole('form', { name: /send a message to coventry judo club/i });
+  await expect(contactForm).toBeVisible();
+  await expect(contactForm).toHaveAttribute('action', 'https://formspree.io/f/xbgjenep');
+  await expect(contactForm).toHaveAttribute('method', 'POST');
+  await expect(contactForm.getByLabel(/your name/i)).toHaveAttribute('required', '');
+  await expect(contactForm.getByLabel(/your name/i)).toBeVisible();
+  await expect(contactForm.getByLabel(/email address/i)).toHaveAttribute('type', 'email');
+  await expect(contactForm.getByLabel(/email address/i)).toHaveAttribute('required', '');
+  await expect(contactForm.getByLabel(/message/i)).toHaveAttribute('required', '');
+  await expect(contactForm.locator('input[name="_gotcha"]')).toBeHidden();
+  await expect(page.getByText(/do not include safeguarding, medical or urgent concerns/i)).toBeVisible();
+  await page.goto('privacy/');
+  await expect(page.getByRole('heading', { name: /contact-form privacy notice/i })).toBeVisible();
+  await expect(page.getByText(/Formspree/i).first()).toBeVisible();
+  await expect(page.getByText(/12 months/i)).toBeVisible();
+  await expect(page.getByText(/Chloe, Club Welfare Officer/i)).toBeVisible();
 });
 
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
