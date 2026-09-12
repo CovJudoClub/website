@@ -12,6 +12,23 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
 });
 
+test('mobile navigation remains visible and coach cards stack in one column', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('.');
+
+  const nav = page.getByRole('navigation', { name: /primary navigation/i });
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+  await expect(nav.getByRole('link', { name: 'Events' })).toBeVisible();
+
+  const firstCoach = page.locator('.team > figure').nth(0);
+  const secondCoach = page.locator('.team > figure').nth(1);
+  await firstCoach.scrollIntoViewIfNeeded();
+  const [firstBox, secondBox] = await Promise.all([firstCoach.boundingBox(), secondCoach.boundingBox()]);
+  expect(Math.abs((firstBox?.x ?? 0) - (secondBox?.x ?? 0))).toBeLessThanOrEqual(1);
+  expect(secondBox?.y).toBeGreaterThan((firstBox?.y ?? 0) + (firstBox?.height ?? 0) - 1);
+});
+
 test('the six supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
   for (const path of ['.', 'membership/', 'shop/', 'events/', 'contact/', 'privacy/']) {
     const response = await page.goto(path);
