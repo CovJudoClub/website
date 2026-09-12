@@ -142,7 +142,7 @@ h2{font-size:clamp(44px,6vw,88px);margin:16px 0 24px}
 .team-wrap .patron .belt{background:var(--ink)}
 .team-wrap .patron figcaption b{font-size:56px}
 .team-wrap .patron figcaption span{color:var(--ink)}
-.team-wrap .patron figcaption p{color:var(--white);font-size:15px;max-width:560px}
+.team-wrap .patron figcaption p{color:var(--white);font-size:16px;max-width:560px}
 .team-wrap .patron p a{color:var(--ink);font-weight:600}.team-wrap .patron p a:hover{color:var(--white)}
 .team-wrap .patron::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 8px);pointer-events:none}
 .team-wrap .patron .kj{position:absolute;right:16px;top:-4px;font-family:"Noto Sans JP",sans-serif;font-weight:900;font-size:110px;line-height:1;color:rgba(18,18,42,.22);writing-mode:vertical-rl}
