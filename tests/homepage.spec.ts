@@ -12,8 +12,8 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
 });
 
-test('the five supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
-  for (const path of ['.', 'membership/', 'shop/', 'contact/', 'privacy/']) {
+test('the six supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
+  for (const path of ['.', 'membership/', 'shop/', 'events/', 'contact/', 'privacy/']) {
     const response = await page.goto(path);
     expect(response?.ok()).toBeTruthy();
   }
@@ -43,6 +43,16 @@ test('archive captions use the club-approved wording', async ({ page }) => {
   await page.goto('.');
 
   await expect(page.locator('#archive figure').nth(1).getByText('Bruce with the midland area squad')).toBeVisible();
+});
+
+test('events page presents supplied competition details and accessible navigation', async ({ page }) => {
+  await page.goto('events/');
+
+  await expect(page).toHaveTitle(/Events — Coventry Judo Club/);
+  await expect(page.getByRole('heading', { name: /on the mat.*on the podium/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
+  await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
+  await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
 });
 
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
