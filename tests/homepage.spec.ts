@@ -57,6 +57,8 @@ test('events page presents supplied competition details and accessible navigatio
 
   await expect(page).toHaveTitle(/Events — Coventry Judo Club/);
   await expect(page.getByRole('heading', { name: /on the mat.*on the podium/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'L2 Coventry Orange and Green Belt Competition' })).toBeVisible();
+  await expect(page.getByText(/players graded 7th to 12th mon/i)).toBeVisible();
   await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
   await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
