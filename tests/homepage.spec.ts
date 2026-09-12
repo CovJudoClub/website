@@ -12,8 +12,8 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
 });
 
-test('the five supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
-  for (const path of ['.', 'membership/', 'shop/', 'contact/', 'privacy/']) {
+test('the six supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
+  for (const path of ['.', 'membership/', 'shop/', 'events/', 'contact/', 'privacy/']) {
     const response = await page.goto(path);
     expect(response?.ok()).toBeTruthy();
   }
@@ -43,6 +43,43 @@ test('archive captions use the club-approved wording', async ({ page }) => {
   await page.goto('.');
 
   await expect(page.locator('#archive figure').nth(1).getByText('Bruce with the midland area squad')).toBeVisible();
+});
+
+test('events page presents supplied competition details and accessible navigation', async ({ page }) => {
+  const localImageResponses: Array<{ url: string; status: number }> = [];
+  page.on('response', (response) => {
+    if (response.url().includes('/website/assets/uploads/')) {
+      localImageResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
+
+  await page.goto('events/');
+
+  const eventImages = page.locator('.ev image-slot, .gal image-slot');
+  await expect(eventImages).toHaveCount(3);
+  for (let index = 0; index < await eventImages.count(); index += 1) {
+    await eventImages.nth(index).scrollIntoViewIfNeeded();
+  }
+  await page.waitForFunction(() => [...document.querySelectorAll('.ev image-slot img, .gal image-slot img')].every((image) => image instanceof HTMLImageElement && image.complete));
+
+  await expect(page).toHaveTitle(/Events — Coventry Judo Club/);
+  await expect(page.getByRole('heading', { name: /on the mat.*on the podium/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'L2 Coventry Orange and Green Belt Competition' })).toBeVisible();
+  await expect(page.getByText(/players graded 7th to 12th mon/i)).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
+  await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
+  await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
+  expect(localImageResponses.length).toBeGreaterThan(0);
+  expect(localImageResponses.every(({ status }) => status === 200)).toBeTruthy();
+});
+
+test('events medal table is keyboard-reachable on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('events/');
+
+  const medalTableRegion = page.locator('.medals');
+  await expect(medalTableRegion).toHaveAttribute('tabindex', '0');
+  await expect(medalTableRegion).toHaveAttribute('aria-label', /2026 competition medals/i);
 });
 
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
