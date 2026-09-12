@@ -20,7 +20,13 @@ test('the four supplied pages are available from their public paths', async ({ p
 
   await expect(page).toHaveTitle(/Contact — Coventry Judo Club/);
   await expect(page.getByRole('link', { name: '07852 237080' })).toBeVisible();
-  await expect(page.getByRole('form')).toHaveCount(0);
+  const contactForm = page.getByRole('form', { name: /send a message to coventry judo club/i });
+  await expect(contactForm).toBeVisible();
+  await expect(contactForm).toHaveAttribute('action', 'https://formspree.io/f/xbgjenep');
+  await expect(contactForm.getByLabel(/your name/i)).toBeVisible();
+  await expect(contactForm.getByLabel(/email address/i)).toHaveAttribute('type', 'email');
+  await expect(contactForm.getByLabel(/message/i)).toBeVisible();
+  await expect(page.getByText(/do not include safeguarding, medical or urgent concerns/i)).toBeVisible();
 });
 
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
