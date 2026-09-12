@@ -39,6 +39,12 @@ test('the five supplied pages and the contact privacy notice are available from 
   await expect(page.getByText(/Chloe, Club Welfare Officer/i)).toBeVisible();
 });
 
+test('archive captions use the club-approved wording', async ({ page }) => {
+  await page.goto('.');
+
+  await expect(page.locator('#archive figure').nth(1).getByText('Bruce with the midland area squad')).toBeVisible();
+});
+
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
   await page.goto('membership/');
 
