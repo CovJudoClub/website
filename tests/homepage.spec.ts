@@ -58,19 +58,22 @@ test('coach panel height defines the patron image height on desktop', async ({ p
 
   const patron = page.locator('.team-wrap .patron');
   const patronImage = patron.locator('.pic');
+  const patronText = patron.locator('figcaption p');
   const standardCoach = page.locator('.team figure').first();
   const standardCoachImage = standardCoach.locator('.pic');
   const standardCoachText = standardCoach.locator('figcaption p');
-  const [panelBox, imageBox, standardImageBox, textSize] = await Promise.all([
+  const [panelBox, imageBox, standardImageBox, patronTextSize, textSize] = await Promise.all([
     patron.boundingBox(),
     patronImage.boundingBox(),
     standardCoachImage.boundingBox(),
+    patronText.evaluate((element) => getComputedStyle(element).fontSize),
     standardCoachText.evaluate((element) => getComputedStyle(element).fontSize)
   ]);
 
   expect(panelBox?.height).toBeGreaterThanOrEqual(420);
   expect(Math.abs((imageBox?.height ?? 0) - (panelBox?.height ?? 0))).toBeLessThanOrEqual(2);
   expect(standardImageBox?.height).toBe(220);
+  expect(patronTextSize).toBe('16px');
   expect(textSize).toBe('16px');
 });
 
