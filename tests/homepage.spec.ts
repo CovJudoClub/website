@@ -12,6 +12,35 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
 });
 
+test('mobile navigation remains visible and coach cards stack in one column', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('.');
+
+  const nav = page.getByRole('navigation', { name: /primary navigation/i });
+  await expect(nav).toBeVisible();
+  const navLinks = nav.getByRole('link');
+  await expect(navLinks).toHaveCount(7);
+  await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+  await expect(nav.getByRole('link', { name: 'Events' })).toBeVisible();
+  const navMetrics = await nav.locator('ul').evaluate((list) => ({
+    clientWidth: list.clientWidth,
+    scrollWidth: list.scrollWidth,
+    links: [...list.querySelectorAll('a')].map((link) => {
+      const rect = link.getBoundingClientRect();
+      return { left: rect.left, right: rect.right, viewportWidth: window.innerWidth };
+    })
+  }));
+  expect(navMetrics.scrollWidth).toBeLessThanOrEqual(navMetrics.clientWidth);
+  expect(navMetrics.links.every(({ left, right, viewportWidth }) => left >= 0 && right <= viewportWidth)).toBeTruthy();
+
+  const firstCoach = page.locator('.team > figure').nth(0);
+  const secondCoach = page.locator('.team > figure').nth(1);
+  await firstCoach.scrollIntoViewIfNeeded();
+  const [firstBox, secondBox] = await Promise.all([firstCoach.boundingBox(), secondCoach.boundingBox()]);
+  expect(Math.abs((firstBox?.x ?? 0) - (secondBox?.x ?? 0))).toBeLessThanOrEqual(1);
+  expect(secondBox?.y).toBeGreaterThan((firstBox?.y ?? 0) + (firstBox?.height ?? 0) - 1);
+});
+
 test('the six supplied pages and the contact privacy notice are available from their public paths', async ({ page }) => {
   for (const path of ['.', 'membership/', 'shop/', 'events/', 'contact/', 'privacy/']) {
     const response = await page.goto(path);
@@ -113,6 +142,14 @@ test('photo credits are overlaid on their associated images', async ({ page }) =
 
   expect(creditBox?.y).toBeGreaterThan((imageBox?.y ?? 0) + (imageBox?.height ?? 0) - 60);
   expect(creditBox?.y).toBeLessThan((imageBox?.y ?? 0) + (imageBox?.height ?? 0));
+});
+
+test('Lee Tibbatts tile does not claim a coaching qualification', async ({ page }) => {
+  await page.goto('.');
+
+  const leeTile = page.locator('.team > figure').filter({ hasText: 'Lee Tibbatts' });
+  await expect(leeTile).toContainText('Trained under world-class mentorship');
+  await expect(leeTile).not.toContainText(/qualified coach/i);
 });
 
 test('coach panel height defines the patron image height on desktop', async ({ page }) => {
