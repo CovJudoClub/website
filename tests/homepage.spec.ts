@@ -18,8 +18,20 @@ test('mobile navigation remains visible and coach cards stack in one column', as
 
   const nav = page.getByRole('navigation', { name: /primary navigation/i });
   await expect(nav).toBeVisible();
+  const navLinks = nav.getByRole('link');
+  await expect(navLinks).toHaveCount(7);
   await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'Events' })).toBeVisible();
+  const navMetrics = await nav.locator('ul').evaluate((list) => ({
+    clientWidth: list.clientWidth,
+    scrollWidth: list.scrollWidth,
+    links: [...list.querySelectorAll('a')].map((link) => {
+      const rect = link.getBoundingClientRect();
+      return { left: rect.left, right: rect.right, viewportWidth: window.innerWidth };
+    })
+  }));
+  expect(navMetrics.scrollWidth).toBeLessThanOrEqual(navMetrics.clientWidth);
+  expect(navMetrics.links.every(({ left, right, viewportWidth }) => left >= 0 && right <= viewportWidth)).toBeTruthy();
 
   const firstCoach = page.locator('.team > figure').nth(0);
   const secondCoach = page.locator('.team > figure').nth(1);

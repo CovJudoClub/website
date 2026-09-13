@@ -32,7 +32,7 @@ section{position:relative}
 @media(max-width:900px){
   .nav .wrap{height:auto;min-height:72px;padding-block:10px;gap:12px;flex-wrap:wrap}
   .nav nav{order:3;width:100%}
-  .nav ul{display:flex;gap:18px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin;scrollbar-color:var(--teal) transparent}
+  .nav ul{display:flex;flex-wrap:wrap;gap:18px;overflow-x:visible;padding:4px 2px 8px}
   .nav ul a{display:block;white-space:nowrap;font-size:13px}
   .nav .btn{margin-left:auto}
 }
