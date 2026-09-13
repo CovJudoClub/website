@@ -132,6 +132,14 @@ test('photo credits are overlaid on their associated images', async ({ page }) =
   expect(creditBox?.y).toBeLessThan((imageBox?.y ?? 0) + (imageBox?.height ?? 0));
 });
 
+test('Lee Tibbatts tile does not claim a coaching qualification', async ({ page }) => {
+  await page.goto('.');
+
+  const leeTile = page.locator('.team > figure').filter({ hasText: 'Lee Tibbatts' });
+  await expect(leeTile).toContainText('Trained under world-class mentorship');
+  await expect(leeTile).not.toContainText(/qualified coach/i);
+});
+
 test('coach panel height defines the patron image height on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('.');
