@@ -61,6 +61,8 @@ test('the six supplied pages and the contact privacy notice are available from t
   await expect(contactForm.getByLabel(/message/i)).toHaveAttribute('required', '');
   await expect(contactForm.locator('input[name="_gotcha"]')).toBeHidden();
   await expect(page.getByText(/do not include safeguarding, medical or urgent concerns/i)).toBeVisible();
+  await page.goto('contact/?sent=1');
+  await expect(page.getByRole('status')).toHaveText(/thank you.*message has been received/i);
   await page.goto('privacy/');
   await expect(page.getByRole('heading', { name: /contact-form privacy notice/i })).toBeVisible();
   await expect(page.getByText(/Formspree/i).first()).toBeVisible();

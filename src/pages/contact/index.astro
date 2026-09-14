@@ -52,6 +52,7 @@
 <form class="cform rv" aria-label="Send a message to Coventry Judo Club" action="https://formspree.io/f/xbgjenep" method="POST">
 <div class="belt"></div>
 <h2>Send us a message</h2>
+<p id="form-confirmation" role="status" aria-live="polite" hidden><strong>Thank you — your message has been received.</strong> A club volunteer will reply as soon as they can.</p>
 <p>Messages go to the Coventry Judo Club volunteer inbox. We will use your details only to reply to your enquiry. Read our <a href="/privacy/">contact-form privacy notice</a>.</p>
 <label>Your name<input name="name" autocomplete="name" required></label>
 <label>Email address<input name="email" type="email" autocomplete="email" required></label>
@@ -81,6 +82,8 @@ const show=el=>el.classList.add('in');
 rv.forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';if(el.getBoundingClientRect().top<innerHeight)show(el)});
 if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{threshold:.12});rv.forEach(el=>io.observe(el))}else rv.forEach(show);
 setTimeout(()=>rv.forEach(show),1500);
+const formConfirmation=document.querySelector('#form-confirmation');
+if(new URLSearchParams(window.location.search).get('sent')==='1'&&formConfirmation){formConfirmation.hidden=false;formConfirmation.scrollIntoView({block:'center'});}
 </script>
 </body>
 </html>
