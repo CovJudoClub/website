@@ -7,9 +7,9 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page).toHaveTitle(/Coventry Judo Club — Judo for kids and adults since 1957/);
   await expect(page.getByRole('heading', { name: /throw.*fall.*rise again/i })).toBeVisible();
   await expect(page.getByRole('navigation', { name: /primary navigation/i })).toBeVisible();
-  await expect(page.getByRole('link', { name: /membership/i }).first()).toHaveAttribute('href', '/website/membership/');
-  await expect(page.getByRole('link', { name: /shop/i }).first()).toHaveAttribute('href', '/website/shop/');
-  await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/website/contact/');
+  await expect(page.getByRole('link', { name: /membership/i }).first()).toHaveAttribute('href', '/membership/');
+  await expect(page.getByRole('link', { name: /shop/i }).first()).toHaveAttribute('href', '/shop/');
+  await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/contact/');
 });
 
 test('mobile navigation remains visible and coach cards stack in one column', async ({ page }) => {
@@ -77,7 +77,7 @@ test('archive captions use the club-approved wording', async ({ page }) => {
 test('events page presents supplied competition details and accessible navigation', async ({ page }) => {
   const localImageResponses: Array<{ url: string; status: number }> = [];
   page.on('response', (response) => {
-    if (response.url().includes('/website/assets/uploads/') || response.url().includes('/website/assets/events/')) {
+    if (response.url().includes('/assets/uploads/') || response.url().includes('/assets/events/')) {
       localImageResponses.push({ url: response.url(), status: response.status() });
     }
   });
@@ -95,13 +95,13 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByRole('heading', { name: /on the mat.*on the podium/i })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'L2 Coventry Orange and Green Belt Competition' })).toBeVisible();
   await expect(page.getByText(/players graded 7th to 12th mon/i)).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/website/events/');
+  await expect(page.getByRole('link', { name: 'Events' }).first()).toHaveAttribute('href', '/events/');
   await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Lucas wins bronze at the Kent Open' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Lucas' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Kent Open' })).toBeVisible();
-  await expect(page.locator('#ev-kent-open-2026 img')).toHaveAttribute('src', '/website/assets/events/lucas-kent-open-bronze-2026-card.jpg');
+  await expect(page.locator('#ev-kent-open-2026 img')).toHaveAttribute('src', '/assets/events/lucas-kent-open-bronze-2026-card.jpg');
   expect(localImageResponses.length).toBeGreaterThan(0);
   expect(localImageResponses.every(({ status }) => status === 200)).toBeTruthy();
 });
@@ -118,9 +118,9 @@ test('events medal table is keyboard-reachable on mobile', async ({ page }) => {
 test('footer links on secondary pages return visitors to the relevant home sections', async ({ page }) => {
   await page.goto('membership/');
 
-  await expect(page.getByRole('contentinfo').getByRole('link', { name: 'About' })).toHaveAttribute('href', '/website/#about');
-  await expect(page.getByRole('contentinfo').getByRole('link', { name: /training schedule/i })).toHaveAttribute('href', '/website/#schedule');
-  await expect(page.getByRole('contentinfo').getByRole('link', { name: /our team/i })).toHaveAttribute('href', '/website/#team');
+  await expect(page.getByRole('contentinfo').getByRole('link', { name: 'About' })).toHaveAttribute('href', '/#about');
+  await expect(page.getByRole('contentinfo').getByRole('link', { name: /training schedule/i })).toHaveAttribute('href', '/#schedule');
+  await expect(page.getByRole('contentinfo').getByRole('link', { name: /our team/i })).toHaveAttribute('href', '/#team');
 });
 
 test('club images do not request design-editor state at runtime', async ({ page }) => {

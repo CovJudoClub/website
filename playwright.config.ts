@@ -7,12 +7,12 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4321/website/',
+    baseURL: 'http://127.0.0.1:4321/',
     trace: 'on-first-retry'
   },
   webServer: {
     command: 'npm run dev -- --host 127.0.0.1',
-    url: 'http://127.0.0.1:4321/website/',
+    url: 'http://127.0.0.1:4321/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
   },
