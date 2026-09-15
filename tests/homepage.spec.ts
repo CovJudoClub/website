@@ -70,6 +70,22 @@ test('the six supplied pages and the contact privacy notice are available from t
   await expect(page.getByText(/Chloe, Club Welfare Officer/i)).toBeVisible();
 });
 
+test('contact form confirms a successful submission without leaving the club site', async ({ page }) => {
+  await page.route('https://formspree.io/f/xbgjenep', async (route) => {
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{}' });
+  });
+  await page.goto('contact/');
+
+  const contactForm = page.getByRole('form', { name: /send a message to coventry judo club/i });
+  await contactForm.getByLabel(/your name/i).fill('Test visitor');
+  await contactForm.getByLabel(/email address/i).fill('test@example.com');
+  await contactForm.getByLabel(/message/i).fill('Please confirm this stays on the club website.');
+  await contactForm.getByRole('button', { name: /send message/i }).click();
+
+  await expect(page).toHaveURL(/\/contact\/$/);
+  await expect(contactForm.getByRole('status')).toHaveText(/thank you.*message has been received/i);
+});
+
 test('archive captions use the club-approved wording', async ({ page }) => {
   await page.goto('.');
 
