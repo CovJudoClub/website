@@ -12,6 +12,25 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/contact/');
 });
 
+test('class schedule separates junior groups and keeps Monday for seniors', async ({ page }) => {
+  await page.goto('.');
+
+  const schedule = page.locator('#schedule');
+  await expect(schedule.locator('.row.head > div')).toHaveText([
+    'Day',
+    'Juniors · Under 8s',
+    'Juniors · Over 8s',
+    'Seniors'
+  ]);
+  const monday = schedule.locator('.row').filter({ hasText: /^Mon/ });
+  await expect(monday.locator('> div')).toHaveText([
+    'Mon',
+    '—',
+    '—',
+    '6:30–8:00pm · Technical & conditioning'
+  ]);
+});
+
 test('mobile navigation remains visible and coach cards stack in one column', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('.');
