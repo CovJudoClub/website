@@ -50,6 +50,7 @@
 .find{font-style:normal;font-size:17px;line-height:1.6;color:#3b3b52;margin-top:20px}
 .find a{display:inline-block;margin-top:12px;font-weight:600;color:var(--coral-d)}.find a:hover{color:var(--ink)}
 .cform{position:relative;background:var(--navy-2);color:var(--paper);padding:40px 32px 32px;display:grid;gap:18px;border:1px solid rgba(255,255,255,.08);clip-path:polygon(0 0,100% 0,100% 94%,96% 100%,0 100%)}
+.cform h2{color:var(--paper)}
 .cform .belt{position:absolute;top:0;left:0;right:0;height:6px;background:var(--teal)}
 .cform label{display:grid;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal)}
 .cform input,.cform textarea{font:inherit;font-family:var(--body);font-size:16px;color:var(--paper);background:var(--navy);border:1px solid rgba(255,255,255,.14);padding:14px 16px;width:100%;letter-spacing:0;text-transform:none;font-weight:400;resize:vertical}
