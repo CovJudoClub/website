@@ -29,6 +29,15 @@ test('class schedule separates junior groups and keeps Monday for seniors', asyn
     '—',
     '6:30–8:00pm · Technical & conditioning'
   ]);
+  for (const day of ['Tue', 'Thu']) {
+    const sharedSession = schedule.locator('.row').filter({ hasText: new RegExp(`^${day}`) });
+    await expect(sharedSession.locator('> div')).toHaveText([
+      day,
+      '6:00–7:00pm',
+      '7:00–8:30pm',
+      '7:00–8:30pm'
+    ]);
+  }
 });
 
 test('mobile navigation remains visible and coach cards stack in one column', async ({ page }) => {
