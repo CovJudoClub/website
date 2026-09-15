@@ -63,7 +63,8 @@ test('the six supplied pages and the contact privacy notice are available from t
   await expect(contactForm.locator('input[name="_gotcha"]')).toBeHidden();
   await expect(page.getByText(/do not include safeguarding, medical or urgent concerns/i)).toBeVisible();
   await page.goto('contact/?sent=1');
-  await expect(page.getByRole('status')).toHaveText(/message sent/i);
+  await expect(page.getByRole('heading', { name: 'Message sent' })).toBeVisible();
+  await expect(page.getByRole('status')).toHaveText(/thank you.*message has been received/i);
   await page.goto('privacy/');
   await expect(page.getByRole('heading', { name: /contact-form privacy notice/i })).toBeVisible();
   await expect(page.getByText(/Formspree/i).first()).toBeVisible();
@@ -84,7 +85,8 @@ test('contact form confirms a successful submission without leaving the club sit
   await contactForm.getByRole('button', { name: /send message/i }).click();
 
   await expect(page).toHaveURL(/\/contact\/$/);
-  await expect(contactForm.getByRole('status')).toHaveText(/message sent/i);
+  await expect(contactForm.getByRole('heading', { name: 'Message sent' })).toBeVisible();
+  await expect(contactForm.getByRole('status')).toHaveText(/thank you.*message has been received/i);
 });
 
 test('archive captions use the club-approved wording', async ({ page }) => {
