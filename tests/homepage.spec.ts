@@ -12,7 +12,7 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/contact/');
 });
 
-test('membership page puts plan costs before the secure Coacha application hand-off', async ({ page }) => {
+test('membership page puts plan costs before the Coacha application hand-off', async ({ page }) => {
   await page.goto('membership/');
 
   const plans = page.locator('#plans');
