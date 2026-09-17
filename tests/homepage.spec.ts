@@ -18,9 +18,9 @@ test('membership page puts plan costs before the secure Coacha application hand-
   const plans = page.locator('#plans');
   const steps = page.locator('#steps');
   await expect(plans.getByRole('heading', { name: /choose your membership/i })).toBeVisible();
-  await expect(plans.getByText(/Coacha securely collects your membership application and payment details/i)).toBeVisible();
+  await expect(plans.getByText(/Coacha is used by the club to manage and administer member records/i)).toBeVisible();
   await expect(plans.getByText('£20').first()).toBeVisible();
-  await expect(plans.getByRole('link', { name: /continue securely to coacha/i }).first()).toBeVisible();
+  await expect(plans.getByRole('link', { name: /continue to coacha/i }).first()).toBeVisible();
   const [plansBox, stepsBox] = await Promise.all([plans.boundingBox(), steps.boundingBox()]);
   expect(plansBox?.y).toBeLessThan(stepsBox?.y ?? Infinity);
 });
