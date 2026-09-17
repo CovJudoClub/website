@@ -12,6 +12,19 @@ test('homepage presents the supplied Coventry Judo Club design', async ({ page }
   await expect(page.getByRole('link', { name: /contact/i }).first()).toHaveAttribute('href', '/contact/');
 });
 
+test('membership page puts plan costs before the Coacha application hand-off', async ({ page }) => {
+  await page.goto('membership/');
+
+  const plans = page.locator('#plans');
+  const steps = page.locator('#steps');
+  await expect(plans.getByRole('heading', { name: /choose your membership/i })).toBeVisible();
+  await expect(plans.getByText(/Coacha is used by the club to manage and administer member records/i)).toBeVisible();
+  await expect(plans.getByText('£20').first()).toBeVisible();
+  await expect(plans.getByRole('link', { name: /continue to coacha/i }).first()).toBeVisible();
+  const [plansBox, stepsBox] = await Promise.all([plans.boundingBox(), steps.boundingBox()]);
+  expect(plansBox?.y).toBeLessThan(stepsBox?.y ?? Infinity);
+});
+
 test('class schedule separates junior groups and keeps Monday for seniors', async ({ page }) => {
   await page.goto('.');
 
