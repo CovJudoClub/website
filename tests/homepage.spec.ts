@@ -161,7 +161,7 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByRole('link', { name: /enter via british judo/i })).toHaveAttribute('href', 'https://www.britishjudo.org.uk/event/l2-coventry-orange-and-green-belt-competition/');
   await expect(page.getByRole('heading', { name: 'Coach Zviad powers to World Veterans silver in Sarajevo' })).toBeVisible();
   await expect(page.getByText(/100\+ category/i)).toBeVisible();
-  await expect(page.locator('#ev-zviad-sarajevo-2026 img')).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-2026.jpg');
+  await expect(page.locator('#ev-zviad-sarajevo-2026 img')).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-medallists-2026.jpg');
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Lucas wins bronze at the Kent Open' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Lucas' })).toBeVisible();
