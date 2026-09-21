@@ -147,7 +147,7 @@ test('events page presents supplied competition details and accessible navigatio
   await page.goto('events/');
 
   const eventImages = page.locator('.ev image-slot, .gal image-slot');
-  await expect(eventImages).toHaveCount(6);
+  await expect(eventImages).toHaveCount(7);
   for (let index = 0; index < await eventImages.count(); index += 1) {
     await eventImages.nth(index).scrollIntoViewIfNeeded();
   }
@@ -162,6 +162,9 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByRole('heading', { name: 'Coach Zviad powers to World Veterans silver in Sarajevo' })).toBeVisible();
   await expect(page.getByText(/100\+ category/i)).toBeVisible();
   await expect(page.locator('#ev-zviad-sarajevo-2026 img')).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-medallists-2026.jpg');
+  await expect(page.locator('#honour').getByText('Zviad · Silver')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Zviad' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Sarajevo World Veterans' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Vinnie' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Lucas wins bronze at the Kent Open' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Lucas' })).toBeVisible();
