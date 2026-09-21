@@ -163,9 +163,10 @@ test('events page presents supplied competition details and accessible navigatio
   await expect(page.getByText(/100\+ category/i)).toBeVisible();
   const zviadFeedImage = page.locator('#ev-zviad-sarajevo-2026 img');
   const zviadHonourImage = page.locator('#gal-zviad-sarajevo-2026 img');
-  await expect(zviadFeedImage).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-medallists-2026.jpg');
-  await expect(zviadFeedImage).toHaveCSS('object-position', '0% 50%');
-  await expect(zviadHonourImage).toHaveCSS('object-position', '0% 50%');
+  await expect(zviadFeedImage).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-zviad-2-2026.jpg');
+  await expect(zviadHonourImage).toHaveAttribute('src', '/assets/events/zviad-sarajevo-veterans-silver-zviad-1-2026.jpg');
+  await expect(zviadFeedImage).toHaveAttribute('alt', 'Veterans medallists at the Sarajevo World Judo Championships 2026');
+  await expect(zviadHonourImage).toHaveAttribute('alt', 'Coach Zviad holding his silver medal at the Sarajevo World Judo Championships Veterans 2026');
   await expect(page.locator('#honour').getByText('Zviad · Silver')).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Zviad' })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Sarajevo World Veterans' })).toBeVisible();
